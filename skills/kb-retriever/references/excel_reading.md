@@ -1,6 +1,7 @@
 # Excel 文件读取
 
 > ⚠️ **使用本文档前请注意**：本文档应在实际处理 Excel 文件之前阅读，以了解正确的 pandas 读取方法。请配合 excel_analysis.md 一起使用。
+> ⚠️ **Python 环境（本机接线）**：本文所有 Python 代码用 `~/.venvs/kb/bin/python` 执行（系统 `python3` 未装 pdfplumber/pandas 等依赖），或先 `source ~/.venvs/kb/bin/activate`。
 
 使用 pandas 读取 Excel 文件的核心方法。
 

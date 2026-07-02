@@ -11,6 +11,7 @@ This file contains advanced patterns and code templates to reference when implem
 5. [Design Canvas (Multi-option Comparison)](#design-canvas)
 6. [Dark Mode Toggle](#dark-mode-toggle)
 7. [Data Visualization Templates](#data-visualization-templates)
+8. [React + Babel Pinned CDN Scripts](#react--babel-pinned-cdn-scripts)
 
 ---
 
@@ -519,3 +520,36 @@ Avoid these combos:
 - ❌ Inter + Roboto + blue buttons (peak AI aesthetic)
 - ❌ Fraunces + purple-pink gradients (overused)
 - ❌ More than three font families (visual chaos)
+
+---
+
+## React + Babel Pinned CDN Scripts
+
+The exact `<script>` tags referenced by SKILL.md (§ React prototypes). **Do not change versions, do not add `type="module"`** (it breaks the Babel in-browser transpilation pipeline). Load order matters: React → ReactDOM → Babel → your component `<script type="text/babel">` blocks.
+
+```html
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"
+        integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z"
+        crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"
+        integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1"
+        crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.10/babel.min.js"
+        integrity="sha384-BcI7nduYchENm39cFMEVJXHEE7fwHONANyn/pY2YTa+BNtrWF2bKBZeI0wqVithi"
+        crossorigin="anonymous"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+  const { useState, useEffect, useMemo, useRef } = React;
+
+  function App() {
+    return <main>…</main>;
+  }
+
+  ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+```
+
+Notes:
+- SRI hashes computed from the exact unpkg artifacts above (sha384). If you must switch CDN (e.g. jsdelivr mirror), recompute integrity — never copy hashes across URLs.
+- Use `react.development.js` variants (no integrity change needed if you re-pin) only when you need readable React warnings while iterating; ship the production pair.

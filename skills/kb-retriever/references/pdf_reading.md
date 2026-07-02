@@ -1,6 +1,7 @@
 # PDF 读取与分析
 
 > ⚠️ **使用本文档前请注意**：本文档应在实际处理 PDF 文件之前完整阅读，以选择最合适的工具和方法。不要在未阅读本文档的情况下盲目尝试处理 PDF。
+> ⚠️ **Python 环境（本机接线）**：本文所有 Python 代码用 `~/.venvs/kb/bin/python` 执行（系统 `python3` 未装 pdfplumber/pandas 等依赖），或先 `source ~/.venvs/kb/bin/activate`。
 
 用于从 PDF 文件中提取文本、表格和元数据的方法。
 

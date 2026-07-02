@@ -1,6 +1,7 @@
 # Excel 数据分析
 
 > ⚠️ **使用本文档前请注意**：本文档应在实际分析 Excel 数据之前阅读，以了解正确的 pandas 分析方法。请先阅读 excel_reading.md 学习如何读取数据。
+> ⚠️ **Python 环境（本机接线）**：本文所有 Python 代码用 `~/.venvs/kb/bin/python` 执行（系统 `python3` 未装 pdfplumber/pandas 等依赖），或先 `source ~/.venvs/kb/bin/activate`。
 
 使用 pandas 对 Excel 数据进行常规分析操作。
 

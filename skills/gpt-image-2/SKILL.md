@@ -19,12 +19,12 @@ description: 面向 GPT Image 2 的图像生成 / 编辑技能。可在 3 种环
 
 ## 运行模式（必读，做任何事之前先确定）
 
-本 Skill 自带一个轻量探测脚本，先跑一次，再根据结果决定怎么干活：
+本 Skill 自带一个轻量探测脚本，先跑一次，再根据结果决定怎么干活。下文所有命令中的 `{baseDir}` 指**本 SKILL.md 所在目录的绝对路径**（插件安装位置因宿主而异，勿假设 cwd，执行前先替换为绝对路径）：
 
 ```bash
-node skills/gpt-image-2/scripts/check-mode.js
+node {baseDir}/scripts/check-mode.js
 # 想拿结构化结果给上层程序用：
-node skills/gpt-image-2/scripts/check-mode.js --json
+node {baseDir}/scripts/check-mode.js --json
 ```
 
 输出会给出 `mode = A` / `A?` / `B-or-C` 以及 `recommendation`。三个模式定义如下：
@@ -174,7 +174,7 @@ Mode B 由宿主图像工具决定保存方式；Mode C 不产生图片。
 ### 0. 检测运行模式（**任何任务的第一步**）
 
 ```bash
-node skills/gpt-image-2/scripts/check-mode.js
+node {baseDir}/scripts/check-mode.js
 ```
 
 输出会告诉你当前是 Mode A / B / C，决定后续是否调用 `generate.js` / `edit.js`。下面 1~4 仅在 **Mode A** 下使用。
@@ -182,7 +182,7 @@ node skills/gpt-image-2/scripts/check-mode.js
 ### 1. 文本生图（Mode A）
 
 ```bash
-node skills/gpt-image-2/scripts/generate.js \
+node {baseDir}/scripts/generate.js \
   --prompt "A cute baby sea otter" \
   --size 1024x1024 \
   --quality high
@@ -191,14 +191,14 @@ node skills/gpt-image-2/scripts/generate.js \
 ### 2. 用提示词文件生图（Mode A）
 
 ```bash
-node skills/gpt-image-2/scripts/generate.js \
+node {baseDir}/scripts/generate.js \
   --promptfile garden-gpt-image-2/prompt/poster-20260424-153045.md
 ```
 
 ### 3. 编辑已有图片（Mode A）
 
 ```bash
-node skills/gpt-image-2/scripts/edit.js \
+node {baseDir}/scripts/edit.js \
   --image assets/source.png \
   --prompt "Replace the background with a clean studio scene"
 ```
@@ -206,7 +206,7 @@ node skills/gpt-image-2/scripts/edit.js \
 ### 4. 带遮罩的局部编辑（Mode A）
 
 ```bash
-node skills/gpt-image-2/scripts/edit.js \
+node {baseDir}/scripts/edit.js \
   --image assets/source.png \
   --mask assets/mask.png \
   --prompt "Replace only the masked area with a glass vase"

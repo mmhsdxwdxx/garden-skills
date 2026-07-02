@@ -147,7 +147,7 @@ fi
 
 cat <<EOF
 
-✓ 完成。工作区：$TARGET（主题 $THEME，见 .theme；reacticle $INSTALLED_REACTICLE）
+✓ 完成。工作区：${TARGET}（主题 ${THEME}，见 .theme；reacticle ${INSTALLED_REACTICLE}）
 
 下一步：
   1. cd $TARGET
