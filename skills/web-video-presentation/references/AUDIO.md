@@ -14,7 +14,7 @@ Auto 模式会自动按 step 播放并自动推进——录屏可以一镜到底
 
 | Provider | 默认 | 何时用 |
 |---|---|---|
-| `minimax` | ✓ | 中文口播首选（用 `mmx-cli`，要 MiniMax API key） |
+| `minimax` | ✓ | 中文口播首选（npm 包名是 `mmx-cli`，**可执行命令是 `mmx`**；要 MiniMax API key） |
 | `openai`  | —— | 多数 agent 已有 `OPENAI_API_KEY`；curl-based、响应快 |
 
 换 / 加 provider 见
@@ -88,6 +88,10 @@ npm run synthesize-audio              # 增量：跳过已存在的 mp3
 npm run synthesize-audio -- --force   # 全部重合成
 npm run synthesize-audio -- --voice=<voice-id>  # 指定音色
 ```
+
+> ⚠️ mmx 的默认音色是**英文**音色：中文口播必须显式传 `--voice=<中文音色 id>`
+> （如 `female-yujie`、`Chinese (Mandarin)_News_Anchor`），可用音色用 `mmx speech voices` 查全量。
+> 另外自动化 / 非交互 shell 里 npm 全局 bin（fnm/nvm 管理时）可能不在 PATH，找不到 `mmx` 时用绝对路径调用。
 
 启动时 runner 会先调 provider 的 `tts_check`：
 
